@@ -1,24 +1,30 @@
 import { useState } from "react";
+import "../Styling/ChatInput.css";
 
-export default function ChatInput() {
-  const [question, setQuestion] = useState("");
+interface ChatInputProps {
+  onSend: (text: string) => void;
+}
+
+export default function ChatInput({ onSend }: ChatInputProps) {
+  const [text, setText] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Verstuurde vraag:", question);
-    setQuestion("");
+    if (!text.trim()) return;
+    onSend(text);
+    setText("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 p-4">
-      <input
-        type="text"
-        placeholder="Stel je vraag..."
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        className="flex-1 p-2 border rounded"
+    <form className="chat-input-form" onSubmit={handleSubmit}>
+      <textarea
+        className="chat-input-textarea"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Stel hier je vraag..."
+        rows={1} // standaard 1 rij
       />
-      <button type="submit" className="p-2 bg-blue-500 text-white rounded">
+      <button type="submit" className="chat-input-button">
         Verstuur
       </button>
     </form>
