@@ -7,16 +7,15 @@ import ChatWindow from "./Components/ChatWindow";
 
 function App() {
   return (
-    // Hoofdcontainer: zorgt voor centreren en styling over de hele pagina
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4">
-      
-      {/* Informatie tekst boven de chatbox */}
-      <div className="info-text max-w-lg text-center mb-6">
-        <h1 className="text-3xl font-bold mb-2">
-        Welkom bij de AI Chatbot van GedeeldeZorg!
-        </h1>
-        <p className="text-xl text-gray-300">
-        Welkom bij de AI ChatBot van GedeeldeZorg.
+    <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-4xl flex flex-col gap-6">
+        {/* Introtekst */}
+        <div className="text-white text-center space-y-4">
+          <h1 className="text-3xl font-bold">
+            Welkom bij de AI Chatbot van GedeeldeZorg!
+          </h1>
+          <p className="text-base max-w-3xl mx-auto">
+          Welkom bij de AI ChatBot van GedeeldeZorg.
 Een AI ChatBot is een digitaal systeem dat met behulp van kunstmatige intelligentie zelfstandig gesprekken kan voeren 
 en vragen kan beantwoorden. Deze technologie biedt ondersteuning door snel en eenvoudig informatie te verstrekken, 
 zonder tussenkomst van een medewerker.
@@ -25,15 +24,16 @@ Houd er rekening mee dat u in gesprek bent met een geautomatiseerde chatbot en n
 Alle berichten die u hier typt, blijven volledig anoniem en worden niet opgeslagen. Wanneer u de pagina ververst of sluit, 
 worden alle berichten direct verwijderd en zijn deze niet meer terug te halen.
         </p>
-      </div>
+        </div>
 
-      {/* Chatbox zelf: een container met achtergrond, padding en schaduw */}
-      <div className="chat-box bg-gray-800 rounded-lg p-4 shadow-lg w-full max-w-lg h-[80vh] flex flex-col">
-        <ChatWindow />
+        {/* Chatvenster */}
+        <div className="flex justify-center">
+          <ChatWindow />
+        </div>
       </div>
-
     </div>
   );
 }
+
 
 export default App;

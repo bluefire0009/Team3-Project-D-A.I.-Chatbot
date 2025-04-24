@@ -21,7 +21,6 @@ export default function ChatWindow() {
     };
     setMessages((prev) => [...prev, newMessage]);
 
-    // Bot gaat typen
     setIsTyping(true);
 
     setTimeout(() => {
@@ -32,34 +31,34 @@ export default function ChatWindow() {
       };
       setMessages((prev) => [...prev, botReply]);
       setIsTyping(false);
-    }, 1500); // 1,5 seconde typen
+    }, 1500);
   };
 
-  // Scroll automatisch naar het laatste bericht
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-return (
-    <div className="chat-window">
-      <div className="chat-messages">
-        {messages.map((msg) => (
-          <div key={msg.id} className={`message ${msg.sender === "user" ? "message-user" : "message-bot"}`}>
-            {msg.text}
-          </div>
-        ))}
-  
-        {isTyping && (
-          <div className="typing-indicator">
-            Bot is aan het typen...
-          </div>
-        )}
-  
-        <div ref={messagesEndRef} />
-      </div>
-  
-      <div className="input-container">
-        <ChatInput onSend={handleSend} />
+  return (
+    <div className="chat-window-container">
+      <div className="chat-window-box">
+        <div className="chat-messages">
+          {messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`message ${msg.sender === "user" ? "message-user" : "message-bot"}`}
+            >
+              {msg.text}
+            </div>
+          ))}
+
+          {isTyping && <div className="typing-indicator">Bot is aan het typen...</div>}
+
+          <div ref={messagesEndRef} />
+        </div>
+
+        <div className="input-container">
+          <ChatInput onSend={handleSend} />
+        </div>
       </div>
     </div>
   );

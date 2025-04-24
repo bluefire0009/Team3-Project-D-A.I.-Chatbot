@@ -35,6 +35,8 @@
     display: flex;
     flex-direction: column;
     height: 80vh;
+    word-break: break-word; /* zorgt ervoor dat de tekst in het tekst vak blijft*/
+    overflow-x: hidden; /* zorgt ervoor dat de tekst in het tekst vak blijft*/
   }
     /* Custom scrollbar voor de chatberichten */
     .chat-messages {
