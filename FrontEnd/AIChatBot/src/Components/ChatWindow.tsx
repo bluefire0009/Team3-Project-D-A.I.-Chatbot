@@ -11,7 +11,7 @@ interface Message {
 export default function ChatWindow() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [fontSize, setFontSize] = useState(16); // standaard fontgrootte in pixels
+  const [fontSize, setFontSize] = useState(16);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleSend = (text: string) => {
@@ -45,12 +45,13 @@ export default function ChatWindow() {
   return (
     <div className="chat-window-container">
       <div className="chat-window-box">
-        {/* Knoppen rechtsboven */}
+        {/* Tekstgrootte knoppen rechtsboven */}
         <div className="chat-header">
           <button className="font-size-btn" onClick={decreaseFontSize}>A−</button>
           <button className="font-size-btn" onClick={increaseFontSize}>A+</button>
         </div>
 
+        {/* Chatberichten */}
         <div className="chat-messages">
           {messages.map((msg) => (
             <div
@@ -71,8 +72,15 @@ export default function ChatWindow() {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="input-container">
-          <ChatInput onSend={handleSend} />
+        {/* Input met spraakknoppen */}
+        <div className="input-container-with-buttons">
+          <div className="voice-buttons">
+            <button className="voice-btn">🎤</button>
+            <button className="voice-btn">🔊</button>
+          </div>
+          <div className="input-field">
+            <ChatInput onSend={handleSend} />
+          </div>
         </div>
       </div>
     </div>

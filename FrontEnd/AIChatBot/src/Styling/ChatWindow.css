@@ -98,3 +98,35 @@
 .input-container {
   padding-top: 1rem;
 }
+
+.input-container-with-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.voice-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.voice-btn {
+  background-color: #1f2937;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.voice-btn:hover {
+  background-color: #2563eb;
+}
+
+.input-field {
+  flex: 1;
+}
