@@ -14,16 +14,33 @@ export default function ChatWindow() {
   const [fontSize, setFontSize] = useState(16);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleSend = (text: string) => {
+  const handleSend = async (text: string) => {
     const newMessage: Message = {
       id: Date.now(),
       text,
       sender: "user",
     };
     setMessages((prev) => [...prev, newMessage]);
-
     setIsTyping(true);
 
+    // Bericht naar backend sturen
+    try {
+      await fetch("http://ChatBot_User_Message/api/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: newMessage.text,
+          timestamp: new Date().toISOString(),
+          sender: "user",
+        }),
+      });
+    } catch (error) {
+      console.error("Fout bij verzenden van bericht naar server:", error);
+    }
+
+    // Simuleer bot antwoord
     setTimeout(() => {
       const botReply: Message = {
         id: Date.now() + 1,
