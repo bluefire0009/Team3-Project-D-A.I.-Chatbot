@@ -18,6 +18,27 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+.chat-header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.font-size-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.font-size-btn:hover {
+  background-color: #1e40af;
+}
+
 .chat-messages {
   flex: 1;
   overflow-y: auto;
@@ -54,18 +75,20 @@
   padding: 0.75rem 1rem;
   border-radius: 1rem;
   align-self: flex-end;
-  max-width: 75%; /* voorkomt dat het te breed wordt */
-  margin-right: 0.5rem; /* afstand van rechterrand */
+  max-width: 75%;
+  margin-right: 0.5rem;
 }
 
 .message-bot {
-  background-color: #374151; /* Donkere achtergrond voor de bot */
+  background-color: #374151;
   color: white;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
-  align-self: flex-start; /* Zorgt ervoor dat de bot berichten naar links komen */
-  max-width: 75%; /* voorkomt dat het te breed wordt */
-  margin-left: 0.5rem; /* afstand van de linkerrand */
+  align-self: flex-start;
+  max-width: 75%;
+  margin-left: 1rem; /* iets verder naar links zoals gevraagd */
+}
+
 .typing-indicator {
   font-style: italic;
   color: #888;
@@ -74,5 +97,4 @@
 
 .input-container {
   padding-top: 1rem;
-}
 }
