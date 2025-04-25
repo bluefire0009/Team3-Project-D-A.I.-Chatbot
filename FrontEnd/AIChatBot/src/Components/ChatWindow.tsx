@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import ChatInput from "./ChatInput";
 import "../Styling/ChatWindow.css";
 
+// Type definition for messages
 interface Message {
   id: number;
   text: string;
@@ -9,11 +10,18 @@ interface Message {
 }
 
 export default function ChatWindow() {
+  // State to store all chat messages
   const [messages, setMessages] = useState<Message[]>([]);
+  // Whether the bot is currently "typing"
   const [isTyping, setIsTyping] = useState(false);
+  // Adjustable font size for accessibility
   const [fontSize, setFontSize] = useState(16);
+  // Whether dyslexia-friendly font is enabled
+  const [dyslexiaMode, setDyslexiaMode] = useState(false);
+  // Ref to scroll to the latest message
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Function to handle sending user messages
   const handleSend = async (text: string) => {
     const newMessage: Message = {
       id: Date.now(),
@@ -23,7 +31,7 @@ export default function ChatWindow() {
     setMessages((prev) => [...prev, newMessage]);
     setIsTyping(true);
 
-    // Bericht naar backend sturen
+    // Simulated POST request to backend endpoint for message logging
     try {
       await fetch("http://ChatBot_User_Message/api/messages", {
         method: "POST",
@@ -40,7 +48,7 @@ export default function ChatWindow() {
       console.error("Fout bij verzenden van bericht naar server:", error);
     }
 
-    // Simuleer bot antwoord
+    // Simulate bot reply after 1.5 seconds
     setTimeout(() => {
       const botReply: Message = {
         id: Date.now() + 1,
@@ -52,49 +60,73 @@ export default function ChatWindow() {
     }, 1500);
   };
 
+  // Scroll to bottom when new message is added
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
+  // Functions to increase/decrease font size within allowed range
   const increaseFontSize = () => setFontSize((prev) => Math.min(prev + 2, 24));
   const decreaseFontSize = () => setFontSize((prev) => Math.max(prev - 2, 12));
+
+  // Toggle for enabling/disabling dyslexia-friendly font
+  const toggleDyslexiaFont = () => setDyslexiaMode((prev) => !prev);
 
   return (
     <div className="chat-window-container">
       <div className="chat-window-box">
-        {/* Tekstgrootte knoppen rechtsboven */}
+        {/* Header with font controls */}
         <div className="chat-header">
+          {/* Toggle dyslexia font */}
+          <button
+            className="font-size-btn"
+            onClick={toggleDyslexiaFont}
+            title="Toggle dyslexie-lettertype"
+          >
+            📖
+          </button>
+
+          {/* Decrease font size */}
           <button className="font-size-btn" onClick={decreaseFontSize}>A−</button>
+          {/* Increase font size */}
           <button className="font-size-btn" onClick={increaseFontSize}>A+</button>
         </div>
 
-        {/* Chatberichten */}
+        {/* Chat messages area */}
         <div className="chat-messages">
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className={`message ${msg.sender === "user" ? "message-user" : "message-bot"}`}
+              className={`message ${msg.sender === "user" ? "message-user" : "message-bot"} ${dyslexiaMode ? "dyslexia-font" : ""}`}
               style={{ fontSize: `${fontSize}px` }}
             >
               {msg.text}
             </div>
           ))}
 
+          {/* Typing indicator when bot is generating a reply */}
           {isTyping && (
-            <div className="typing-indicator" style={{ fontSize: `${fontSize}px` }}>
+            <div
+              className={`typing-indicator ${dyslexiaMode ? "dyslexia-font" : ""}`}
+              style={{ fontSize: `${fontSize}px` }}
+            >
               Bot is aan het typen...
             </div>
           )}
 
+          {/* Invisible anchor to scroll to latest message */}
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input met spraakknoppen */}
+        {/* Bottom input area with voice buttons */}
         <div className="input-container-with-buttons">
+          {/* Placeholder buttons for speech input/output */}
           <div className="voice-buttons">
-            <button className="voice-btn">🎤</button>
-            <button className="voice-btn">🔊</button>
+            <button className="voice-btn" title="Spraak naar tekst">🎤</button>
+            <button className="voice-btn" title="Tekst naar spraak">🔊</button>
           </div>
+
+          {/* Input component for typing messages */}
           <div className="input-field">
             <ChatInput onSend={handleSend} />
           </div>

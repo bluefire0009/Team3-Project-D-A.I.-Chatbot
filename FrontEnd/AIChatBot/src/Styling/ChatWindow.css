@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap');
+
+.dyslexia-font {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+}
+
 .chat-window-container {
   display: flex;
   justify-content: center;
