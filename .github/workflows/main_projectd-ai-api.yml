@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - Lilith---BackEnd-api
   workflow_dispatch:
 
 env:
