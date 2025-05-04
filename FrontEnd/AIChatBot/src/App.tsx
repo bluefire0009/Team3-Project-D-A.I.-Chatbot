@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './Styling/App.css'; // Importeer de algemene styling
+import ChatInput from "./Components/ChatInput";
+import ChatWindow from "./Components/ChatWindow";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    // Hoofdcontainer: zorgt voor centreren en styling over de hele pagina
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4">
+      
+      {/* Informatie tekst boven de chatbox */}
+      <div className="info-text max-w-lg text-center mb-6">
+        <h1 className="text-3xl font-bold mb-2">
+        Welkom bij de AI Chatbot van GedeeldeZorg!
+        </h1>
+        <p className="text-xl text-gray-300">
+        Welkom bij de AI ChatBot van GedeeldeZorg.
+Een AI ChatBot is een digitaal systeem dat met behulp van kunstmatige intelligentie zelfstandig gesprekken kan voeren 
+en vragen kan beantwoorden. Deze technologie biedt ondersteuning door snel en eenvoudig informatie te verstrekken, 
+zonder tussenkomst van een medewerker.
+
+Houd er rekening mee dat u in gesprek bent met een geautomatiseerde chatbot en niet met een echte persoon. 
+Alle berichten die u hier typt, blijven volledig anoniem en worden niet opgeslagen. Wanneer u de pagina ververst of sluit, 
+worden alle berichten direct verwijderd en zijn deze niet meer terug te halen.
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      {/* Chatbox zelf: een container met achtergrond, padding en schaduw */}
+      <div className="chat-box bg-gray-800 rounded-lg p-4 shadow-lg w-full max-w-lg h-[80vh] flex flex-col">
+        <ChatWindow />
+      </div>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
