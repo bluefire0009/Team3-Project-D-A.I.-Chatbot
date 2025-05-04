@@ -31,14 +31,6 @@ class Program
             options.Cookie.SameSite = SameSiteMode.Lax;      // Set SameSite for security
         });
 
-        // builder.Services.AddScoped<ILoginService, LoginService>();
-        // builder.Services.AddScoped<IUserStorage, UserDBStorage>();
-        // builder.Services.AddScoped<IEventAttendanceStorage, EventAttendanceDBStorage>();
-
-        // builder.Services.AddDbContext<DatabaseContext>(
-        //     options => options.UseSqlite(builder.Configuration.GetConnectionString("SqlLiteDb"))
-        // );
-
         builder.Services.AddControllers()
         .AddJsonOptions(options =>
         {
