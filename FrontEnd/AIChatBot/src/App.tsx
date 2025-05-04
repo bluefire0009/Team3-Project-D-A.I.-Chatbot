@@ -1,5 +1,5 @@
 import './Styling/App.css';
-import ChatInput from "./Components/ChatInput";
+// import ChatInput from "./Components/ChatInput";
 import ChatWindow from "./Components/ChatWindow";
 import Logo from './assets/Logo.png';
 
