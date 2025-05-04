@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import ChatInput from "./ChatInput";
 import "../Styling/ChatWindow.css";
 
+// Type definition for messages
 interface Message {
   id: number;
   text: string;
@@ -9,21 +10,45 @@ interface Message {
 }
 
 export default function ChatWindow() {
+  // State to store all chat messages
   const [messages, setMessages] = useState<Message[]>([]);
+  // Whether the bot is currently "typing"
   const [isTyping, setIsTyping] = useState(false);
+  // Adjustable font size for accessibility
+  const [fontSize, setFontSize] = useState(16);
+  // Whether dyslexia-friendly font is enabled
+  const [dyslexiaMode, setDyslexiaMode] = useState(false);
+  // Ref to scroll to the latest message
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleSend = (text: string) => {
+  // Function to handle sending user messages
+  const handleSend = async (text: string) => {
     const newMessage: Message = {
       id: Date.now(),
       text,
       sender: "user",
     };
     setMessages((prev) => [...prev, newMessage]);
-
-    // Bot gaat typen
     setIsTyping(true);
 
+    // Simulated POST request to backend endpoint for message logging
+    try {
+      await fetch("http://ChatBot_User_Message/api/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: newMessage.text,
+          timestamp: new Date().toISOString(),
+          sender: "user",
+        }),
+      });
+    } catch (error) {
+      console.error("Fout bij verzenden van bericht naar server:", error);
+    }
+
+    // Simulate bot reply after 1.5 seconds
     setTimeout(() => {
       const botReply: Message = {
         id: Date.now() + 1,
@@ -32,34 +57,80 @@ export default function ChatWindow() {
       };
       setMessages((prev) => [...prev, botReply]);
       setIsTyping(false);
-    }, 1500); // 1,5 seconde typen
+    }, 1500);
   };
 
-  // Scroll automatisch naar het laatste bericht
+  // Scroll to bottom when new message is added
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-return (
-    <div className="chat-window">
-      <div className="chat-messages">
-        {messages.map((msg) => (
-          <div key={msg.id} className={`message ${msg.sender === "user" ? "message-user" : "message-bot"}`}>
-            {msg.text}
+  // Functions to increase/decrease font size within allowed range
+  const increaseFontSize = () => setFontSize((prev) => Math.min(prev + 2, 24));
+  const decreaseFontSize = () => setFontSize((prev) => Math.max(prev - 2, 12));
+
+  // Toggle for enabling/disabling dyslexia-friendly font
+  const toggleDyslexiaFont = () => setDyslexiaMode((prev) => !prev);
+
+  return (
+    <div className="chat-window-container">
+      <div className="chat-window-box">
+        {/* Header with font controls */}
+        <div className="chat-header">
+          {/* Toggle dyslexia font */}
+          <button
+            className="font-size-btn"
+            onClick={toggleDyslexiaFont}
+            title="Toggle dyslexie-lettertype"
+          >
+            📖
+          </button>
+
+          {/* Decrease font size */}
+          <button className="font-size-btn" onClick={decreaseFontSize}>A−</button>
+          {/* Increase font size */}
+          <button className="font-size-btn" onClick={increaseFontSize}>A+</button>
+        </div>
+
+        {/* Chat messages area */}
+        <div className="chat-messages">
+          {messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`message ${msg.sender === "user" ? "message-user" : "message-bot"} ${dyslexiaMode ? "dyslexia-font" : ""}`}
+              style={{ fontSize: `${fontSize}px` }}
+            >
+              {msg.text}
+            </div>
+          ))}
+
+          {/* Typing indicator when bot is generating a reply */}
+          {isTyping && (
+            <div
+              className={`typing-indicator ${dyslexiaMode ? "dyslexia-font" : ""}`}
+              style={{ fontSize: `${fontSize}px` }}
+            >
+              Bot is aan het typen...
+            </div>
+          )}
+
+          {/* Invisible anchor to scroll to latest message */}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Bottom input area with voice buttons */}
+        <div className="input-container-with-buttons">
+          {/* Placeholder buttons for speech input/output */}
+          <div className="voice-buttons">
+            <button className="voice-btn" title="Spraak naar tekst">🎤</button>
+            <button className="voice-btn" title="Tekst naar spraak">🔊</button>
           </div>
-        ))}
-  
-        {isTyping && (
-          <div className="typing-indicator">
-            Bot is aan het typen...
+
+          {/* Input component for typing messages */}
+          <div className="input-field">
+            <ChatInput onSend={handleSend} />
           </div>
-        )}
-  
-        <div ref={messagesEndRef} />
-      </div>
-  
-      <div className="input-container">
-        <ChatInput onSend={handleSend} />
+        </div>
       </div>
     </div>
   );
