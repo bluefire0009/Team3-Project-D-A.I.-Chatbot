@@ -20,11 +20,6 @@ class Program
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        // builder.Services.AddTransient<IAdminStorage, AdminDBStorage>();
-        // builder.Services.AddTransient<IAttendanceStorage, AttendanceDBStorage>();
-        // builder.Services.AddTransient<IEventStorage, EventDBStorage>();
 
         builder.Services.AddDistributedMemoryCache();
 
@@ -54,12 +49,6 @@ class Program
 
         app.UseSession();
         app.UseCors(MyAllowSpecificOrigins);
-
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
 
 
         // Configure the HTTP request pipeline.
