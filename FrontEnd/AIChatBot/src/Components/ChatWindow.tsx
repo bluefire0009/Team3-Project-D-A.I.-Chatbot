@@ -33,17 +33,25 @@ export default function ChatWindow() {
 
     // Simulated POST request to backend endpoint for message logging
     try {
-      await fetch("http://ChatBot_User_Message/api/messages", {
+      await fetch("http://localhost:5077/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          text: newMessage.text,
-          timestamp: new Date().toISOString(),
-          sender: "user",
-        }),
-      });
+        body: JSON.stringify(messages.map((msg) => (
+          {
+            role: msg.sender === "user" ? "user" : "assistant",
+            content: msg.text
+          }
+        ))),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const resultText = data.choices[0].message.content;
+          setMessages((prev) => [...prev, { id: Date.now() + 1, sender: "bot", text: resultText }])
+          console.log(resultText)
+        })
+        .catch((error) => console.error(error));
     } catch (error) {
       console.error("Fout bij verzenden van bericht naar server:", error);
     }

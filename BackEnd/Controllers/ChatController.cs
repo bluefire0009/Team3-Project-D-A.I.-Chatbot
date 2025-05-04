@@ -8,13 +8,14 @@ public class ChatController : Controller
     private string _api_key = "";
     private string _url = "";
     private string _systemPrompt = "";
+
     [HttpPost()]
-    public async Task<IActionResult> sendMessage([FromBody] Message[] messages) {
+    public async Task<IActionResult> SendMessage([FromBody] Message[] messages) {
         string Msgs = $@"{{
     ""role"": ""system"",
     ""content"": ""{_systemPrompt}""
 }}";
-        for (int i = 1; i < messages.Length; i++)
+        for (int i = 0; i < messages.Length; i++)
         {
             Msgs += $@"{{
     ""role"": ""{messages[i].Role}"",
