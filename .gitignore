@@ -484,3 +484,4 @@ $RECYCLE.BIN/
 *.swp
 
 *.sln
+.vscode/launch.json
