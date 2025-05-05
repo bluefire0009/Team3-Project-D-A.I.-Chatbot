@@ -10,7 +10,7 @@ class Program
             options.AddPolicy(name: MyAllowSpecificOrigins,
                                 policy =>
                                 {
-                                    policy.WithOrigins("http://localhost:5173") // Allow React app URL
+                                    policy.WithOrigins("http://localhost:5173", "https://kind-water-06fd0de03.6.azurestaticapps.net/") // Allow React app URL
                                             .AllowAnyMethod() // Allow any HTTP method (GET, POST, etc.)
                                             .AllowAnyHeader() // Allow any header (Content-Type, Authorization, etc.)
                                             .AllowCredentials(); // Allow credentials if needed (cookies, HTTP authentication)
