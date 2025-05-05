@@ -485,3 +485,4 @@ $RECYCLE.BIN/
 
 *.sln
 .vscode/launch.json
+obj/
