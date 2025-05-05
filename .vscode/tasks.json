@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "dotnet",
+			"task": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "dotnet: build"
+		},
+		{
+			"type": "dotnet",
+			"task": "build D:\\Wszystko HDD\\Szkola\\studia\\Project-D\\Team3-Project-D-A.I.-Chatbot\\BackEnd\\BackEnd.csproj",
+			"file": "D:\\Wszystko HDD\\Szkola\\studia\\Project-D\\Team3-Project-D-A.I.-Chatbot\\BackEnd\\BackEnd.csproj",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "dotnet: build D:\\Wszystko HDD\\Szkola\\studia\\Project-D\\Team3-Project-D-A.I.-Chatbot\\BackEnd\\BackEnd.csproj"
+		}
+	]
+}
