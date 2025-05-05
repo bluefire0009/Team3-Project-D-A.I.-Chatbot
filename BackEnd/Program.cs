@@ -40,7 +40,7 @@ class Program
         var app = builder.Build();
 
         app.UseSession();
-        app.UseCors(MyAllowSpecificOrigins);
+
 
 
         // Configure the HTTP request pipeline.
@@ -59,7 +59,7 @@ class Program
 
         app.UseRouting();
 
-
+        app.UseCors(MyAllowSpecificOrigins);
         app.UseAuthorization();
 
 
