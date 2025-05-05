@@ -5,9 +5,9 @@ using System.Text.Json;
 [Route("api/chat")]
 public class ChatController : Controller
 {
-    private string _api_key = "";
-    private string _url = "";
-    private string _systemPrompt = "";
+    private string _api_key = "key here";
+    private string _url = "url here";
+    private string _systemPrompt = """prompt here""";
 
     [HttpPost()]
     public async Task<IActionResult> SendMessage([FromBody] Message[] messages) {
