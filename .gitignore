@@ -483,5 +483,6 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 
-# My own
 *.sln
+.vscode/launch.json
+obj/
