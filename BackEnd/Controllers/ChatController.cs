@@ -10,31 +10,33 @@ public class ChatController : Controller
     private string _systemPrompt = "";
 
     [HttpPost()]
-    public async Task<IActionResult> SendMessage([FromBody] Message[] messages) {
+    public async Task<IActionResult> SendMessage([FromBody] Message[] messages)
+    {
         string Msgs = $@"{{
-    ""role"": ""system"",
-    ""content"": ""{_systemPrompt}""
-}}";
+                    ""role"": ""system"",
+                    ""content"": ""{_systemPrompt}""
+                    }}";
         for (int i = 0; i < messages.Length; i++)
         {
             Msgs += $@"{{
-    ""role"": ""{messages[i].Role}"",
-    ""content"": ""{messages[i].Content}""
-}}";
-            if (i != messages.Length - 1) {
+                    ""role"": ""{messages[i].Role}"",
+                    ""content"": ""{messages[i].Content}""
+                    }}";
+            if (i != messages.Length - 1)
+            {
                 Msgs += ",\n";
             }
         }
         string jsonData = $@"{{
-    ""messages"" : [
-        {Msgs}
-    ],
-    ""temperature"": 0.7,
-    ""top_p"": 0.95,
-    ""max_tokens"": 800,
-    ""frequency_penalty"": 0,
-    ""presence_penalty"": 0,
-}}";
+                            ""messages"" : [
+                                {Msgs}
+                            ],
+                            ""temperature"": 0.7,
+                            ""top_p"": 0.95,
+                            ""max_tokens"": 800,
+                            ""frequency_penalty"": 0,
+                            ""presence_penalty"": 0,
+                            }}";
 
         HttpClient client = new HttpClient();
         // api key header
@@ -50,7 +52,8 @@ public class ChatController : Controller
 
         // return result.StatusCode == System.Net.HttpStatusCode.OK;
 
-        if (result.StatusCode == System.Net.HttpStatusCode.OK) {
+        if (result.StatusCode == System.Net.HttpStatusCode.OK)
+        {
             return Ok(result);
         }
         return BadRequest(result);
