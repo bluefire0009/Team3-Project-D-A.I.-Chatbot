@@ -14,7 +14,7 @@ public class ChatController : Controller
         string Msgs = $@"{{
     ""role"": ""system"",
     ""content"": ""{_systemPrompt}""
-}}";
+}},"+"\n";
         for (int i = 0; i < messages.Length; i++)
         {
             Msgs += $@"{{
@@ -33,25 +33,19 @@ public class ChatController : Controller
     ""top_p"": 0.95,
     ""max_tokens"": 800,
     ""frequency_penalty"": 0,
-    ""presence_penalty"": 0,
+    ""presence_penalty"": 0
 }}";
-
+    // return Ok(jsonData);
         HttpClient client = new HttpClient();
         // api key header
         client.DefaultRequestHeaders.Add("api-key", _api_key);
-
-        // OAuth key header
-        // client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", await GetAuthToken(userId));
 
         // send request
         HttpContent postContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
         var result = await client.PostAsync(_url, postContent);
 
-
-        // return result.StatusCode == System.Net.HttpStatusCode.OK;
-
         if (result.StatusCode == System.Net.HttpStatusCode.OK) {
-            return Ok(result);
+            return Ok(await result.Content.ReadAsStringAsync());
         }
         return BadRequest(result);
     }

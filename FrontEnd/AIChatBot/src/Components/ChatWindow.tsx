@@ -28,17 +28,37 @@ export default function ChatWindow() {
       text,
       sender: "user",
     };
+  
+    // Add the new message to the local messages state
     setMessages((prev) => [...prev, newMessage]);
     setIsTyping(true);
+  
+    // Include the new message in the payload explicitly
+    const updatedMessages = [
+      ...messages,
+      {
+        id: Date.now(),
+        sender: newMessage.sender,
+        text: newMessage.text,
+      },
+    ];
+  
 
     // Simulated POST request to backend endpoint for message logging
     try {
+      console.log(updatedMessages)
+      console.log(JSON.stringify(updatedMessages.map((msg) => (
+        {
+          role: msg.sender === "user" ? "user" : "assistant",
+          content: msg.text
+        }
+      ))))
       await fetch("http://localhost:5077/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(messages.map((msg) => (
+        body: JSON.stringify(updatedMessages.map((msg) => (
           {
             role: msg.sender === "user" ? "user" : "assistant",
             content: msg.text
@@ -49,22 +69,22 @@ export default function ChatWindow() {
         .then((data) => {
           const resultText = data.choices[0].message.content;
           setMessages((prev) => [...prev, { id: Date.now() + 1, sender: "bot", text: resultText }])
+          setIsTyping(false);
           console.log(resultText)
         })
-        .catch((error) => console.error(error));
     } catch (error) {
       console.error("Fout bij verzenden van bericht naar server:", error);
     }
 
     // Simulate bot reply after 1.5 seconds
     setTimeout(() => {
-      const botReply: Message = {
-        id: Date.now() + 1,
-        text: "Dit is een voorbeeldantwoord van de bot!",
-        sender: "bot",
-      };
-      setMessages((prev) => [...prev, botReply]);
-      setIsTyping(false);
+      // const botReply: Message = {
+      //   id: Date.now() + 1,
+      //   text: "Dit is een voorbeeldantwoord van de bot!",
+      //   sender: "bot",
+      // };
+      // setMessages((prev) => [...prev, botReply]);
+      // setIsTyping(false);
     }, 1500);
   };
 
