@@ -3,11 +3,13 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
+      - main
       - Lilith---FrontEnd-hosting-test
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - Lilith---FrontEnd-hosting-test
+      - main
 
 jobs:
   build_and_deploy_job:
