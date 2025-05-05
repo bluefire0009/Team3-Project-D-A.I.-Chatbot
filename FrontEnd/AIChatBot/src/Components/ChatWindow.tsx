@@ -53,7 +53,7 @@ export default function ChatWindow() {
           content: msg.text
         }
       ))))
-      await fetch("http://localhost:5077/api/chat", {
+      await fetch("https://project-d-ai-api-cad4hddsbvgvg4fu.germanywestcentral-01.azurewebsites.net/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
