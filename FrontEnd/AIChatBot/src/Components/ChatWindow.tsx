@@ -66,7 +66,7 @@ export default function ChatWindow() {
   useEffect(() => {
     const welcomeMessage: Message = {
       id: Date.now(),
-      text: "Hallo! Waarmee kan ik je vandaag helpen?",
+      text: "Welkom bij de AI Chatbot GedeeldeZorg! Waarmee kan ik je helpen? 😊",
       sender: "bot",
     };
     setMessages([welcomeMessage]);
