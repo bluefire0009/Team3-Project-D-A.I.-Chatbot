@@ -8,9 +8,9 @@ function App() {
     <div className="relative min-h-screen bg-gray-900 flex items-center justify-center px-4 py-8">
       
       {/* Logo rechtsboven */}
-      <header className="absolute top-4 right-4">
-        <img src={Logo} alt="GedeeldeZorg Logo" className="h-12 w-auto" />
-      </header>
+      
+        <img src={Logo} alt="GedeeldeZorg Logo" className="Logo" />
+      
 
       <div className="w-full max-w-4xl flex flex-col gap-6">
         
