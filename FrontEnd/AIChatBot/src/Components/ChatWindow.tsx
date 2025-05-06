@@ -55,6 +55,8 @@ export default function ChatWindow() {
     } catch (error) {
       console.error("Fout bij verzenden van bericht naar server:", error);
     }
+
+
   };
 
   // Scroll naar onderen bij nieuwe berichten
