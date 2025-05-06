@@ -2,6 +2,13 @@
 
 *{margin: 0}
 
+.Logo {
+  width: 14rem;
+  margin: 0 auto;
+  display: block;
+  border-radius: 2rem
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
