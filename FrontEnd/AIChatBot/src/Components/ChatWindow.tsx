@@ -76,16 +76,7 @@ export default function ChatWindow() {
       console.error("Fout bij verzenden van bericht naar server:", error);
     }
 
-    // Simulate bot reply after 1.5 seconds
-    setTimeout(() => {
-      // const botReply: Message = {
-      //   id: Date.now() + 1,
-      //   text: "Dit is een voorbeeldantwoord van de bot!",
-      //   sender: "bot",
-      // };
-      // setMessages((prev) => [...prev, botReply]);
-      // setIsTyping(false);
-    }, 1500);
+
   };
 
   // Scroll to bottom when new message is added
