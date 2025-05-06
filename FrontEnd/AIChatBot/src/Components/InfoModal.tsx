@@ -15,7 +15,7 @@ export default function InfoModal() {
   return (
     <div className="modal">
       <div
-        className={`modal-content text-white space-y-4 ${dyslexiaMode ? "dyslexia-font" : ""}`}
+        className={`modal-content text-white space-y-4 relative ${dyslexiaMode ? "dyslexia-font" : ""}`}
         style={{ fontSize: `${fontSize}px` }}
       >
         <div className="text-center">
@@ -32,6 +32,7 @@ export default function InfoModal() {
           </p>
         </div>
 
+        {/* Footer met knoppen */}
         <div className="modal-footer">
           <button className="modal-confirm" onClick={() => setShowing(false)}>Oké!</button>
 
@@ -39,7 +40,18 @@ export default function InfoModal() {
             <button className="font-size-btn" onClick={toggleDyslexiaFont} title="Dyslexie-lettertype">📖</button>
             <button className="font-size-btn" onClick={decreaseFontSize} title="Kleiner">−</button>
             <button className="font-size-btn" onClick={increaseFontSize} title="Groter">+</button>
+            <button className="font-size-btn" title="Microfoon knop">🎤</button>
+            <button className="font-size-btn" title="Geluid knop">🔊</button>
           </div>
+        </div>
+
+        {/* Legenda linksonder in de popup */}
+        <div className="modal-legend">
+          <p>− : Verklein tekst</p>
+          <p>+ : Vergroot tekst</p>
+          <p>📖 : Dyslexie lettertype</p>
+          <p>🎤 : Microfoon knop</p>
+          <p>🔊 : Geluid knop</p>
         </div>
       </div>
     </div>
