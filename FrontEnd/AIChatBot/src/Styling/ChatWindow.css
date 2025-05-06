@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap');
 
+/* 🧠 Dyslexie lettertype klasse */
 .dyslexia-font {
   font-family: 'OpenDyslexic', Arial, sans-serif;
 }
 
+/* 🧱 Buitenste container van het chatvenster */
 .chat-window-container {
   display: flex;
   justify-content: center;
@@ -12,6 +14,7 @@
   box-sizing: border-box;
 }
 
+/* 📦 Chatbox zelf */
 .chat-window-box {
   display: flex;
   flex-direction: column;
@@ -24,6 +27,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+/* 🎛️ Bovenste knoppenrij */
 .chat-header {
   display: flex;
   justify-content: flex-end;
@@ -31,6 +35,7 @@
   margin-bottom: 0.5rem;
 }
 
+/* 🔠 Knoppen voor tekstgrootte */
 .font-size-btn {
   background-color: #2563eb;
   color: white;
@@ -40,11 +45,11 @@
   cursor: pointer;
   font-size: 1rem;
 }
-
 .font-size-btn:hover {
   background-color: #1e40af;
 }
 
+/* 💬 Container voor berichten */
 .chat-messages {
   flex: 1;
   overflow-y: auto;
@@ -55,7 +60,7 @@
   gap: 0.5rem;
 }
 
-/* Custom scrollbar */
+/* 🎨 Scrollbar styling */
 .chat-messages::-webkit-scrollbar {
   width: 6px;
 }
@@ -67,6 +72,7 @@
   background: transparent;
 }
 
+/* 🧾 Algemene berichtstijl */
 .message {
   max-width: 70%;
   word-wrap: break-word;
@@ -75,6 +81,7 @@
   color: white;
 }
 
+/* 👤 Gebruikersbericht (blauw) */
 .message-user {
   background-color: #2563eb;
   color: white;
@@ -82,9 +89,10 @@
   border-radius: 1rem;
   align-self: flex-end;
   max-width: 75%;
-  margin-right: 0.5rem;
+  margin-right: 1rem; /* aangepaste marge: gelijke afstand rechts */
 }
 
+/* 🤖 Botbericht (grijs) */
 .message-bot {
   background-color: #374151;
   color: white;
@@ -92,19 +100,22 @@
   border-radius: 1rem;
   align-self: flex-start;
   max-width: 75%;
-  margin-left: 1rem; /* iets verder naar links zoals gevraagd */
+  margin-left: 1rem; /* aangepaste marge: gelijke afstand links */
 }
 
+/* ✍️ Typing indicator */
 .typing-indicator {
   font-style: italic;
   color: #888;
   margin-left: 0.5rem;
 }
 
+/* 🧮 Container voor invoerveld */
 .input-container {
   padding-top: 1rem;
 }
 
+/* 🎙️ Container voor spraakknoppen en invoer */
 .input-container-with-buttons {
   display: flex;
   align-items: center;
@@ -112,6 +123,7 @@
   padding-top: 1rem;
 }
 
+/* 🎤 Microfoon en speakerknoppen */
 .voice-buttons {
   display: flex;
   flex-direction: column;
@@ -133,6 +145,7 @@
   background-color: #2563eb;
 }
 
+/* ✍️ Inputveld */
 .input-field {
   flex: 1;
 }
