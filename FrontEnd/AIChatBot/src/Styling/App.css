@@ -105,6 +105,9 @@
   margin: 0 auto;
   width: min-content;
 }
+.modal-confirm {
+  font-size: 1.2rem;
+}
 
 .content {
   width: 100vw;
