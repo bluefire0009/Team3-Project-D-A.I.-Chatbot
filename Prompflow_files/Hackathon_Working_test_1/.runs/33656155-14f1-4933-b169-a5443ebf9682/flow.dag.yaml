@@ -1,0 +1,83 @@
+id: template_chat_flow
+name: Template Chat Flow
+inputs:
+  chat_history:
+    type: list
+    is_chat_input: false
+    is_chat_history: true
+  question:
+    type: string
+    is_chat_input: true
+outputs:
+  answer:
+    type: string
+    reference: ${chat.output}
+    is_chat_output: true
+nodes:
+- name: chat
+  type: llm
+  source:
+    type: code
+    path: chat.jinja2
+  inputs:
+    deployment_name: gpt-4o-mini
+    temperature: 0.7
+    top_p: 1
+    max_tokens: 256
+    response_format:
+      type: text
+    chat_history: ${inputs.chat_history}
+    lookup: ${Index_lookup.output}
+    question: ${inputs.question}
+  provider: AzureOpenAI
+  connection: 10846-m9twyqo1-eastus2_aoai
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+- name: Index_lookup
+  type: python
+  source:
+    type: package
+    tool: promptflow_vectordb.tool.common_index_lookup.search
+  inputs:
+    mlindex_content: >
+      embeddings:
+        connection:
+          id: 
+            /subscriptions/c247450d-57aa-4aaa-af79-e99f4ea47f50/resourceGroups/rg-1084607-4097_ai/providers/Microsoft.MachineLearningServices/workspaces/socaile-kaartbot/connections/ai-socialekaartbotaifoundry951475773397_aoai
+        connection_type: workspace_connection
+        deployment: ''
+        dimension: 0
+        file_format_version: '2'
+        kind: none
+        model: text-embedding-ada-002
+        schema_version: '2'
+      index:
+        api_version: 2024-05-01-preview
+        connection:
+          id: 
+            /subscriptions/c247450d-57aa-4aaa-af79-e99f4ea47f50/resourceGroups/rg-1084607-4097_ai/providers/Microsoft.MachineLearningServices/workspaces/socaile-kaartbot/connections/aisearchsocialekaartbot
+        connection_type: workspace_connection
+        endpoint: https://ai-search-sociale-kaart-bot.search.windows.net/
+        engine: azure-sdk
+        field_mapping:
+          content: content
+          filename: filepath
+          metadata: meta_json_string
+          title: title
+          url: url
+        index: bubbly-longan-cyc5cv665m
+        kind: acs
+        semantic_configuration_name: azureml-default
+      self:
+        path: 
+          azureml://subscriptions/c247450d-57aa-4aaa-af79-e99f4ea47f50/resourcegroups/rg-1084607-4097_ai/workspaces/Socaile-KaartBot/datastores/workspaceblobstore/paths/azureml/7e29c7ed-38bf-42c8-a1f1-67290edf2152/index/
+        asset_id: 
+          azureml://locations/westeurope/workspaces/edb60b86-1dde-4bfa-a01c-2088518bb462/data/bubbly-longan-cyc5cv665m/versions/1
+    queries: ${inputs.question}
+    query_type: Keyword
+    top_k: 3
+  use_variants: false
+node_variants: {}
+environment:
+  python_requirements_txt: requirements.txt

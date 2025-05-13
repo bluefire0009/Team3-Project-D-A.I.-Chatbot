@@ -1,0 +1,80 @@
+{
+  "nodes": {
+    "chat": {
+      "variant_0": {
+        "inputs": {},
+        "inputsValue": {}
+      }
+    },
+    "Index_lookup": {
+      "variant_0": {
+        "inputs": {
+          "index_type": [
+            {
+              "value": "Registered Index"
+            }
+          ],
+          "acs_content_field": [],
+          "acs_embedding_field": [],
+          "acs_index_name": [],
+          "acs_metadata_field": [],
+          "cosmosdb_nosql_connection": [],
+          "cosmosdb_nosql_container_name": [],
+          "cosmosdb_nosql_content_field": [],
+          "cosmosdb_nosql_database_name": [],
+          "cosmosdb_nosql_embedding_field": [],
+          "embedding_type": [],
+          "embedding_deployment": [],
+          "embedding_model": [],
+          "serverless_embedding_connection": [],
+          "es_content_field": [],
+          "es_embedding_field": [],
+          "es_index_connection": [],
+          "es_index_name": [],
+          "es_metadata_field": [],
+          "mlindex_asset_id": [
+            {
+              "display_value": "bubbly-longan-cyc5cv665m:1",
+              "value": "azureml://locations/westeurope/workspaces/edb60b86-1dde-4bfa-a01c-2088518bb462/data/bubbly-longan-cyc5cv665m/versions/1"
+            }
+          ],
+          "mongodb_collection": [],
+          "mongodb_connection": [],
+          "mongodb_content_field": [],
+          "mongodb_database": [],
+          "mongodb_embedding_field": [],
+          "mongodb_index_name": [],
+          "mongodb_search_index": [],
+          "pinecone_content_field": [],
+          "pinecone_index_connection": [],
+          "pinecone_index_name": [],
+          "pinecone_index_namespace": [],
+          "pinecone_metadata_field": [],
+          "postgres_connection": [],
+          "postgres_content_field": [],
+          "postgres_embedding_field": [],
+          "postgres_search_type": [],
+          "postgres_table_name": [],
+          "qdrant_embedding_field": [],
+          "qdrant_index_connection": [],
+          "qdrant_index_name": [],
+          "semantic_configuration": [],
+          "weaviate_collection": [],
+          "weaviate_connection": [],
+          "weaviate_content_field": [],
+          "weaviate_embedding_field": [],
+          "query_type": [
+            {
+              "display_value": "Keyword",
+              "value": "Keyword"
+            }
+          ]
+        },
+        "inputsValue": {
+          "index_type": "Registered Index",
+          "mlindex_asset_id": "azureml://locations/westeurope/workspaces/edb60b86-1dde-4bfa-a01c-2088518bb462/data/bubbly-longan-cyc5cv665m/versions/1"
+        }
+      }
+    }
+  }
+}
