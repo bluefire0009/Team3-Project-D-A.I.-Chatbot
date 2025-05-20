@@ -48,8 +48,7 @@ export default function ChatWindow() {
       })
         .then((response) => response.json())
         .then((data) => {
-          const resultText = data.choices[0].message.content;
-          setMessages((prev) => [...prev, { id: Date.now() + 1, sender: "bot", text: resultText }]);
+          setMessages((prev) => [...prev, { id: Date.now() + 1, sender: "bot", text: data["answer"] }]);
           setIsTyping(false);
         });
     } catch (error) {
