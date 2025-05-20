@@ -16,10 +16,10 @@ public class ChatController : Controller
 
         // the Ai http body format has a field for chat_history and the loop formats the recieved request into that format
         string chat_history = "";
-        for (int i = 0; i < messages.Length - 1; i = i + 2)
+        for (int i = 0; i < messages.Length - 1; i += 2)
         {
-            string question = messages[i + 1].Content;
-            string response = messages[i].Content;
+            string question = CleanString(messages[i + 1].Content);
+            string response = CleanString(messages[i].Content);
             chat_history += $$"""
             {
                 "inputs": {
@@ -40,7 +40,7 @@ public class ChatController : Controller
             "chat_history": [
                 {{chat_history}}
             ],
-            "question": "{{messages.Last().Content}}"
+            "question": "{{CleanString(messages.Last().Content)}}"
             }
         """;
         HttpClient client = new HttpClient();
@@ -56,6 +56,12 @@ public class ChatController : Controller
             return Ok(await result.Content.ReadAsStringAsync());
         }
         return BadRequest(result);
+    }
+
+    // Cleans the string to prevent user from escaping
+    private string CleanString(string input)
+    {
+        return JsonSerializer.Serialize(input).Trim('"');
     }
 
     public class Message
