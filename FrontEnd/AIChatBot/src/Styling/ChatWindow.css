@@ -136,3 +136,14 @@
 .input-field {
   flex: 1;
 }
+
+
+@media only screen and (max-width: 720px) {
+  .chat-window-container {
+    padding: 1rem;
+  }
+
+  .chat-window-box {
+    height: 70vh;
+  }
+}

@@ -33,7 +33,7 @@ export default function ChatInput({ onSend }: ChatInputProps) {
         rows={1}
       />
       <button type="submit" className="chat-input-button">
-        Verstuur
+        ↩
       </button>
     </form>
   );
