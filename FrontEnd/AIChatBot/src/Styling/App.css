@@ -1,9 +1,6 @@
 * {
   box-sizing: border-box;
-}
-
-* {
-  margin: 0
+   margin: 0;
 }
 
 .Logo {
@@ -109,6 +106,7 @@
   background-color: rgb(0, 0, 0);
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
   /* Black w/ opacity */
 }
 
@@ -116,7 +114,8 @@
   margin: 0 auto;
   width: 70%;
   min-height: 70%;
-  background-color: black;
+  background-color: #000;
+  color: #fff;
   border-radius: 3rem;
   padding: 2rem;
 }
@@ -128,6 +127,8 @@
 
 .modal-confirm {
   font-size: 1.2rem;
+  background-color: #2563eb;
+  color: #fff;
 }
 
 .content {
