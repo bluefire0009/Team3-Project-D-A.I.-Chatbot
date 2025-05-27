@@ -137,6 +137,20 @@
   flex: 1;
 }
 
+.error-header {
+  background-color: #990202;
+  color: #dbafaf;
+  width: calc(100% + 2rem);
+  position: relative;
+  left: -1rem;
+  height: 2.5rem;
+  top: -1rem;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.5rem;
+  text-align: center;
+  border: #b55656 2px solid;
+}
+
 
 @media only screen and (max-width: 720px) {
   .chat-window-container {

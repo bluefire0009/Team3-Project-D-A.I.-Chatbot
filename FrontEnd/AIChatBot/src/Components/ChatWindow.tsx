@@ -15,6 +15,7 @@ export default function ChatWindow() {
   const [fontSize, setFontSize] = useState(16);
   const [dyslexiaMode, setDyslexiaMode] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [errorOccured, setErrorOccurance] = useState(false);
 
   const handleSend = async (text: string) => {
     const newMessage: Message = {
@@ -35,25 +36,25 @@ export default function ChatWindow() {
       },
     ];
 
-    try {
-      await fetch("https://project-d-ai-api-cad4hddsbvgvg4fu.germanywestcentral-01.azurewebsites.net/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedMessages.map((msg) => ({
-          role: msg.sender === "user" ? "user" : "assistant",
-          content: msg.text
-        }))),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setMessages((prev) => [...prev, { id: Date.now() + 1, sender: "bot", text: data["answer"] }]);
-          setIsTyping(false);
-        });
-    } catch (error) {
-      console.error("Fout bij verzenden van bericht naar server:", error);
-    }
+    await fetch("https://project-d-ai-api-cad4hddsbvgvg4fu.germanywestcentral-01.azurewebsites.net/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedMessages.map((msg) => ({
+        role: msg.sender === "user" ? "user" : "assistant",
+        content: msg.text
+      }))),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setMessages((prev) => [...prev, { id: Date.now() + 1, sender: "bot", text: data["answer"] }]);
+        setIsTyping(false);
+      }).catch((e) => {
+        console.error(e);
+        setErrorOccurance(true);
+        setIsTyping(false);
+      });
 
 
   };
@@ -80,6 +81,9 @@ export default function ChatWindow() {
   return (
     <div className="chat-window-container">
       <div className="chat-window-box">
+        {!errorOccured ? '' : <div className="error-header">
+          ‼ Er is iets onverwachts misgegaan, probeer het later opnieuw ‼
+        </div>}
         <div className="chat-header">
           <button
             className="font-size-btn"
