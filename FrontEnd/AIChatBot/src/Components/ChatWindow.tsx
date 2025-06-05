@@ -126,7 +126,7 @@ export default function ChatWindow() {
           </div>
 
           <div className="input-field">
-            <ChatInput onSend={handleSend} />
+            <ChatInput onSend={handleSend} dyslexiaMode={dyslexiaMode}/>
           </div>
         </div>
       </div>

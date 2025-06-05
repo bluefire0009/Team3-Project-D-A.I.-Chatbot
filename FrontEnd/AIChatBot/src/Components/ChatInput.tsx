@@ -3,9 +3,10 @@ import "../Styling/ChatInput.css";
 
 interface ChatInputProps {
   onSend: (text: string) => void;
+  dyslexiaMode: boolean
 }
 
-export default function ChatInput({ onSend }: ChatInputProps) {
+export default function ChatInput({ onSend, dyslexiaMode }: ChatInputProps) {
   const [text, setText] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -25,7 +26,7 @@ export default function ChatInput({ onSend }: ChatInputProps) {
   return (
     <form className="chat-input-form" onSubmit={handleSubmit}>
       <textarea
-        className="chat-input-textarea"
+        className={`chat-input-textarea  ${dyslexiaMode ? "dyslexia-font" : ""}`}
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}
