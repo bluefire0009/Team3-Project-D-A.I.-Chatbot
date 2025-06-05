@@ -160,6 +160,14 @@
 .font-size-btn:hover {
   background-color: #444;
 }
+.font-size-btn:disabled {
+  background-color: #c3c3c3;
+  cursor: not-allowed;
+  filter: grayscale(0.8)
+}
+.font-size-btn:disabled:hover {
+  background-color: #aeaeae;
+}
 
 .dyslexia-font {
   font-family: 'OpenDyslexic', Arial, sans-serif;

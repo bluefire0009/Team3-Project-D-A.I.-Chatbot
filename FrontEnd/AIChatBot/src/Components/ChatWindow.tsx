@@ -121,8 +121,8 @@ export default function ChatWindow() {
 
         <div className="input-container-with-buttons">
           <div className="voice-buttons">
-            <button className="voice-btn" title="Spraak naar tekst">🎤</button>
-            <button className="voice-btn" title="Tekst naar spraak">🔊</button>
+            <button className="voice-btn" title="Spraak naar tekst" disabled>🎤</button>
+            <button className="voice-btn" title="Tekst naar spraak" disabled>🔊</button>
           </div>
 
           <div className="input-field">

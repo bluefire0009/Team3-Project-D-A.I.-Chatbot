@@ -40,8 +40,7 @@ export default function InfoModal() {
             <button className="font-size-btn" onClick={toggleDyslexiaFont} title="Dyslexie-lettertype">📖</button>
             <button className="font-size-btn" onClick={decreaseFontSize} title="Kleiner">−</button>
             <button className="font-size-btn" onClick={increaseFontSize} title="Groter">+</button>
-            <button className="font-size-btn" title="Microfoon knop">🎤</button>
-            <button className="font-size-btn" title="Geluid knop">🔊</button>
+            <button className="font-size-btn" title="Geluid knop" disabled>🔊</button>
           </div>
         </div>
 
