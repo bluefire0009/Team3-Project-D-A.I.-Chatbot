@@ -18,8 +18,12 @@ export default function InfoModal() {
         className={`modal-content text-white space-y-4 relative ${dyslexiaMode ? "dyslexia-font" : ""}`}
         style={{ fontSize: `${fontSize}px` }}
       >
-        <div className="text-center">
+        <div className="modal-titlebar">
           <h1 className="text-3xl font-bold">Welkom bij de AI Chatbot van GedeeldeZorg!</h1>
+          <button className="modal-exit" onClick={() => setShowing(false)}><span>X</span></button>
+        </div>
+        <div className="text-center">
+          
           <p className="text-base max-w-3xl mx-auto">
             Welkom bij de AI ChatBot van GedeeldeZorg.
             Een AI ChatBot is een digitaal systeem dat met behulp van kunstmatige intelligentie zelfstandig gesprekken kan voeren 
@@ -40,8 +44,7 @@ export default function InfoModal() {
             <button className="font-size-btn" onClick={toggleDyslexiaFont} title="Dyslexie-lettertype">📖</button>
             <button className="font-size-btn" onClick={decreaseFontSize} title="Kleiner">−</button>
             <button className="font-size-btn" onClick={increaseFontSize} title="Groter">+</button>
-            <button className="font-size-btn" title="Microfoon knop">🎤</button>
-            <button className="font-size-btn" title="Geluid knop">🔊</button>
+            <button className="font-size-btn" title="Geluid knop" disabled>🔊</button>
           </div>
         </div>
 

@@ -147,6 +147,26 @@
   gap: 0.5rem;
 }
 
+.modal-titlebar {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.modal-exit {
+  background-color: transparent;
+  width: min-content;
+  height: min-content;
+}
+
+.modal-exit:hover {
+  background-color: #444;
+}
+
+.modal-exit span {
+  font-size: 2rem;
+}
+
 .font-size-btn {
   background-color: #2d2d2d;
   border: none;
@@ -159,6 +179,14 @@
 
 .font-size-btn:hover {
   background-color: #444;
+}
+.font-size-btn:disabled {
+  background-color: #c3c3c3;
+  cursor: not-allowed;
+  filter: grayscale(0.8)
+}
+.font-size-btn:disabled:hover {
+  background-color: #aeaeae;
 }
 
 .dyslexia-font {

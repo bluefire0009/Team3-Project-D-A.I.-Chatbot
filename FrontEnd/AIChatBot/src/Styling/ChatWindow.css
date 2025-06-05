@@ -132,6 +132,14 @@
 .voice-btn:hover {
   background-color: #2563eb;
 }
+.voice-btn:disabled {
+  background-color: #495f7d;
+  cursor: not-allowed;
+  filter: grayscale(0.8)
+}
+.voice-btn:disabled:hover {
+  background-color: #6a89b6;
+}
 
 .input-field {
   flex: 1;
