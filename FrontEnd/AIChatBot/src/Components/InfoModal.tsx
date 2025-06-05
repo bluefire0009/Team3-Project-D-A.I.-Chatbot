@@ -18,8 +18,12 @@ export default function InfoModal() {
         className={`modal-content text-white space-y-4 relative ${dyslexiaMode ? "dyslexia-font" : ""}`}
         style={{ fontSize: `${fontSize}px` }}
       >
-        <div className="text-center">
+        <div className="modal-titlebar">
           <h1 className="text-3xl font-bold">Welkom bij de AI Chatbot van GedeeldeZorg!</h1>
+          <button className="modal-exit" onClick={() => setShowing(false)}><span>X</span></button>
+        </div>
+        <div className="text-center">
+          
           <p className="text-base max-w-3xl mx-auto">
             Welkom bij de AI ChatBot van GedeeldeZorg.
             Een AI ChatBot is een digitaal systeem dat met behulp van kunstmatige intelligentie zelfstandig gesprekken kan voeren 

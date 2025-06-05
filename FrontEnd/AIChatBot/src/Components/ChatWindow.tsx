@@ -92,8 +92,8 @@ export default function ChatWindow() {
           >
             📖
           </button>
-          <button className="font-size-btn" onClick={decreaseFontSize}>−</button>
-          <button className="font-size-btn" onClick={increaseFontSize}>+</button>
+          <button className="font-size-btn" title="Verklein de tekst" onClick={decreaseFontSize}>−</button>
+          <button className="font-size-btn" title="Vergroot de tekst" onClick={increaseFontSize}>+</button>
         </div>
 
         <div className="chat-messages">
