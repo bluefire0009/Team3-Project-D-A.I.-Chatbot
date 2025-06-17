@@ -92,8 +92,8 @@ export default function ChatWindow() {
           >
             📖
           </button>
-          <button className="font-size-btn" onClick={decreaseFontSize}>−</button>
-          <button className="font-size-btn" onClick={increaseFontSize}>+</button>
+          <button className="font-size-btn" title="Verklein de tekst" onClick={decreaseFontSize}>−</button>
+          <button className="font-size-btn" title="Vergroot de tekst" onClick={increaseFontSize}>+</button>
         </div>
 
         <div className="chat-messages">
@@ -121,12 +121,12 @@ export default function ChatWindow() {
 
         <div className="input-container-with-buttons">
           <div className="voice-buttons">
-            <button className="voice-btn" title="Spraak naar tekst">🎤</button>
-            <button className="voice-btn" title="Tekst naar spraak">🔊</button>
+            <button className="voice-btn" title="Spraak naar tekst" disabled>🎤</button>
+            <button className="voice-btn" title="Tekst naar spraak" disabled>🔊</button>
           </div>
 
           <div className="input-field">
-            <ChatInput onSend={handleSend} />
+            <ChatInput onSend={handleSend} dyslexiaMode={dyslexiaMode}/>
           </div>
         </div>
       </div>

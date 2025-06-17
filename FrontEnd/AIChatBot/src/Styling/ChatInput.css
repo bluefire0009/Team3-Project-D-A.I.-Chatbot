@@ -22,7 +22,6 @@
 .chat-input-button {
   height: 4rem;
   width: 4rem;
-  font-size: 1.2rem;
   border-radius: 1.5rem;
   background-color: #2563eb;
   color: white;
@@ -33,4 +32,11 @@
 
 .chat-input-button:hover {
   background-color: #1e40af;
+}
+
+.chat-input-button-icon {
+  color: #fff;
+  width: 2.8rem;
+  position: relative;
+  left: -0.6rem;
 }
