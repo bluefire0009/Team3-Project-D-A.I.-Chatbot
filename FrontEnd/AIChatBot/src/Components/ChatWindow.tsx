@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import ChatInput from "./ChatInput";
 import "../Styling/ChatWindow.css";
+import ReactMarkdown from 'react-markdown'
 
 // Type definition for messages
 interface Message {
@@ -103,7 +104,7 @@ export default function ChatWindow() {
               className={`message ${msg.sender === "user" ? "message-user" : "message-bot"} ${dyslexiaMode ? "dyslexia-font" : ""}`}
               style={{ fontSize: `${fontSize}px` }}
             >
-              {msg.text}
+            <ReactMarkdown children={msg.text}/>
             </div>
           ))}
 
