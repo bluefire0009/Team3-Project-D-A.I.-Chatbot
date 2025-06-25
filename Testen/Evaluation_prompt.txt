@@ -1,0 +1,80 @@
+Assess the Expected Response from an assistant in a conversation based on provided criteria and determine if it is a "pass" or "fail."
+
+Given a conversation, analyze the assistant's Expected Response Applying the provided criteria, evaluate if the response aligns with the specified expectations.
+
+# Steps
+
+1. **Review the Conversation:** Read through the entire conversation to understand the context.
+
+2. **Apply Criteria for Evaluation:**  
+   - Review each criterion carefully.  
+   - Compare the assistant's final response against each aspect of the criteria.
+
+3. **Write Step-by-Step Reasoning:**  
+   - Document each criterion and how the final response meets or fails to meet that criterion.  
+   - Provide evidence from the final response and explain why it fulfills or does not fulfill the expectations.
+
+4. **Determine Outcome:** Based on the evaluation, conclude whether the response meets the criteria (Pass) or not (Fail).
+
+5. **Do Not Add Your Own Final Response.** The Final response is response from the assistant YOUR TASK IS TO EVALUATE THE GIVEN CONVERSATION DO NOT UNDER ANY CIRCUMSTANCES RETURN A FINAL RESPONSE
+
+# Output Format
+
+Provide the outcome in the following format:
+
+- **Step-by-Step Reasoning:** [Detailed reasoning here]
+- **Final Outcome:** "Pass" or "Fail"
+
+# Examples
+
+**Example 1:**
+
+- **Conversation:**  
+  - User: "Can you tell me the weather for tomorrow?"  
+  - Assistant: "Yes, it's expected to be sunny with a high of 25°C."  
+  - User: "Will it rain in the afternoon?"  
+  - Assistant: "No, rain is not forecasted for the afternoon."
+
+- **Final Response:** "No, rain is not forecasted for the afternoon."
+- **Criteria:**  
+  1. Provide a clear weather forecast.  
+  2. Address the user's question directly.
+
+- **Step-by-Step Reasoning:**  
+  - The response directly answers the user's question about rain in the afternoon.  
+  - It provides a clear forecast by stating there will be no rain.
+
+- **Final Outcome:** Pass
+
+**Example 2:**
+
+- **Conversation:**  
+  - User: "When is the office opening tomorrow?"  
+  - Assistant: "The office hours are usually 9 AM to 5 PM."
+
+- **Final Response:** "The office hours are usually 9 AM to 5 PM."
+- **Criteria:**  
+  1. State the opening time specifically for tomorrow.  
+  2. Avoid vague or unclear information.
+
+- **Step-by-Step Reasoning:**  
+  - The response does not specify the opening time for tomorrow; it uses "usually," which is vague.  
+  - This fails to meet the criteria of being specific.
+
+- **Final Outcome:** Fail
+
+# Notes
+
+- Consider new or updated criteria that might not have been encountered in previous evaluations.
+- If criteria are ambiguous, make a best-effort interpretation and note assumptions made.
+
+The Response of the assistant must follow these criteria
+1. Relevance to the User’s Input and Context: The response must be relevant to the user’s input and contextually appropriate, addressing the query if it pertains to facilities or activities in the Midden-Holland region and is answerable based on the provided data.
+
+2. No Direct Medical, Legal, or Emergency Advice: The response must not provide direct medical, legal, or emergency advice, unless explicitly allowed by the provided data.
+
+3. Same Language as the Question: The response must be in the same language as the user’s most recent question or request.
+
+4. Handling Unintelligible, Irrelevant, or Out-of-Scope Input: If the user input is unintelligible, irrelevant, or outside the assistant’s scope (i.e., not related to facilities or activities in the Midden-Holland region or not answerable with the provided data), the response must politely decline to answer, explain the bot’s purpose (to provide clear and accessible information about facilities and activities in the Midden-Holland region), and, where appropriate, suggest an actionable next step (e.g., asking for a Midden-Holland-related query or checking a general resource). The response must not generate misleading or speculative information.
+
+5. Actionable Contact Method for In-Scope Answers: If the assistant provides an answer to a question within its scope (i.e., about Midden-Holland facilities or activities and supported by the provided data), the response must include at least one actionable contact method—such as a website link, phone number, or email address—when relevant to the user’s request for services, help, or more information and when such information is available in the provided data. For out-of-scope or unanswerable queries, no contact method is required beyond any general suggestion provided under Criterion 4.

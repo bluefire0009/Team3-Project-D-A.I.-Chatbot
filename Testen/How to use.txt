@@ -1,0 +1,6 @@
+1. Run the Make_the_question_answer_csv.py on a Test_vragen.txt file that contains comma separated questions
+2. Run Convert_csv_quetion_answer_to_conversation.py on the output of step 1
+3. Run de output van step 2 in de Azure manual eveluation (zie 2.4.4.1 Werking van de AI-evaluatietesten in het technish rapport)
+4. Export de Output van de Azure manual evaluation in een .csv
+5. Run Csv_cleaner op de output van 4
+6. Run excel_converter op 5
